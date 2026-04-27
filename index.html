@@ -24,7 +24,7 @@ body{
     position:fixed;pointer-events:none;
     transform:translate(-50%,-50%);
     background:radial-gradient(circle, rgba(108,99,255,0.7), rgba(108,99,255,0));
-    mix-blend-mode:screen;transition:0.1s;z-index:9999;
+    mix-blend-mode:screen;z-index:9999;
 }
 
 /* Toggle */
@@ -52,49 +52,53 @@ header{
                linear-gradient(120deg,#0b0d14,#0f1230);
 }
 
-/* Logo */
-.logo{width:260px;max-width:90%;animation:titlePop 1.2s ease;}
-@keyframes titlePop{from{opacity:0;transform:scale(0.7);}to{opacity:1;transform:scale(1);}}
+.logo{width:260px;max-width:90%;}
 
-header p{
-    margin-top:14px;font-size:1.2rem;color:var(--muted);
-    opacity:0;animation:fadeUp 1s ease forwards;animation-delay:0.8s;
-}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-
+/* Buttons */
 .btn{
-    display:inline-block;padding:10px 18px;
+    display:inline-block;padding:8px 14px;
     background:linear-gradient(135deg,var(--accent),#6dff9c);
-    color:#000;border-radius:10px;font-weight:600;
+    color:#000;border-radius:8px;font-weight:600;
 }
 
 /* Sections */
-section{padding:100px 20px;scroll-margin-top:80px;}
+section{padding:80px 20px;}
+
+/* SMALLER CARDS */
 .products{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:25px;
-    margin-top:50px;
+    gap:20px;
+    margin-top:40px;
 }
+
 .card{
-    background:var(--card);border-radius:18px;overflow:hidden;
-    box-shadow:0 25px 60px rgba(0,0,0,0.35);
-    transform:translateY(80px);opacity:0;
-    transition:0.6s;cursor:pointer;
+    background:var(--card);
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 15px 40px rgba(0,0,0,0.3);
+    transition:0.4s;
 }
-.card.reveal{transform:translateY(0);opacity:1;}
-.card:hover{transform:translateY(-15px) scale(1.04);box-shadow:0 40px 90px rgba(108,99,255,0.35);}
-.card img{width:100%;height:220px;object-fit:cover;}
-.card-content{padding:24px;}
-.card h3{font-size:1.4rem;}
-.details{color:var(--muted);margin-top:8px;}
-.price{margin:16px 0;font-weight:bold;}
+.card:hover{
+    transform:translateY(-8px) scale(1.02);
+}
+
+.card img{
+    width:100%;
+    height:160px;
+    object-fit:cover;
+}
+
+.card-content{padding:16px;}
+.card h3{font-size:1.2rem;}
+.details{color:var(--muted);font-size:0.9rem;margin-top:6px;}
+.price{margin:10px 0;font-weight:bold;}
 
 /* Contact */
-form{display:flex;flex-direction:column;max-width:500px;margin:auto;}
-input,textarea{padding:12px;margin:10px 0;border-radius:8px;border:none;}
-textarea{min-height:100px;}
-footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #1f2333;}
+form{display:flex;flex-direction:column;max-width:400px;margin:auto;}
+input,textarea{padding:10px;margin:8px 0;border-radius:6px;border:none;}
+footer{text-align:center;padding:30px;color:var(--muted);}
+
 </style>
 </head>
 
@@ -110,25 +114,17 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #1
 </nav>
 
 <header id="home">
-<svg class="logo" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
-<defs>
-<linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
-<stop offset="0%" stop-color="#6c63ff"/>
-<stop offset="100%" stop-color="#00e5ff"/>
-</linearGradient>
-</defs>
-<polygon points="10,10 25,2 40,10 40,28 25,36 10,28" fill="none" stroke="url(#grad)" stroke-width="2"/>
-<text x="50" y="28" font-size="22" font-weight="700" fill="url(#grad)">Print3D</text>
-</svg>
+<h1>Print3D</h1>
 <p>Modern Custom 3D Printing & Prototyping</p>
 <a class="btn" href="#products">See Products</a>
 </header>
 
 <section id="products">
 <h2>Our Products</h2>
+
 <div class="products">
 
-<!-- PRODUCT CARDS -->
+<!-- FOX (UPDATED PRICE ₹30) -->
 <div class="card">
 <img src="Fox.jpg">
 <div class="card-content">
@@ -139,93 +135,25 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #1
 </div>
 </div>
 
+<!-- BENCHY -->
 <div class="card">
 <img src="Benchy.jpg">
 <div class="card-content">
-<h3>Benchy (Boat Model)</h3>
-<div class="details">5cm x 6.5cm, classic 3D printing test model</div>
+<h3>Benchy</h3>
+<div class="details">5cm x 6.5cm test model</div>
 <div class="price">₹15</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%2C%20I%20am%20interested%20in%20Benchy%20(Boat%20Model)%20(%E2%82%B915)" target="_blank">WhatsApp</a>
+<a class="btn" href="https://wa.me/919823847358?text=Hi%2C%20I%20am%20interested%20in%20Benchy%20(%E2%82%B915)" target="_blank">WhatsApp</a>
 </div>
 </div>
 
+<!-- SPIDER -->
 <div class="card">
-<img src="spider.jpg" alt="Spider Model">
+<img src="spider.jpg">
 <div class="card-content">
 <h3>Spider Model</h3>
-<div class="details">2cm x 6cm, detailed small figure</div>
+<div class="details">Detailed small figure</div>
 <div class="price">₹10</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%2C%20I%20am%20interested%20in%20Spider%20Model%20(%E2%82%B910)" target="_blank">WhatsApp</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/400x300">
-<div class="card-content">
-<h3>Keyboard Key Remover</h3>
-<div class="details">Standard size, handy tool for keyboards</div>
-<div class="price">₹10</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%2C%20I%20am%20interested%20in%20Keyboard%20Key%20Remover%20(%E2%82%B910)" target="_blank">WhatsApp</a>
-</div>
-</div>
-
-<div class="card">
-<img src="Dinosour.jpg">
-<div class="card-content">
-<h3>Flexible Dinosaur</h3>
-<div class="details">5cm x 10cm, bendable and fun</div>
-<div class="price">₹25</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%2C%20I%20am%20interested%20in%20Flexible%20Dinosaur%20(%E2%82%B925)" target="_blank">WhatsApp</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/400x300">
-<div class="card-content">
-<h3>Keyboard Stand</h3>
-<div class="details">Standard size, ergonomic design</div>
-<div class="price">₹20</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%2C%20I%20am%20interested%20in%20Keyboard%20Stand%20(%E2%82%B920)" target="_blank">WhatsApp</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/400x300">
-<div class="card-content">
-<h3>Rocktobus</h3>
-<div class="details">Standard size, fun collectible figure</div>
-<div class="price">₹20</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%2C%20I%20am%20interested%20in%20Rocktobus%20(%E2%82%B920)" target="_blank">WhatsApp</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/400x300">
-<div class="card-content">
-<h3>Custom Name</h3>
-<div class="details">Personalized text, price depends on size</div>
-<div class="price">Price on Request</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%2C%20I%20am%20interested%20in%20Custom%20Name" target="_blank">WhatsApp</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/400x300">
-<div class="card-content">
-<h3>Flexi Fox</h3>
-<div class="details">Standard size, bendable collectible</div>
-<div class="price">₹15</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%2C%20I%20am%20interested%20in%20Flexi%20Fox%20(%E2%82%B915)" target="_blank">WhatsApp</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/400x300">
-<div class="card-content">
-<h3>Flexi Octopus</h3>
-<div class="details">Standard size, fun flexi toy</div>
-<div class="price">₹20</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%2C%20I%20am%20interested%20in%20Flexi%20Octopus%20(%E2%82%B920)" target="_blank">WhatsApp</a>
+<a class="btn" href="https://wa.me/919823847358?text=Hi%20Spider%20Model%20(%E2%82%B910)" target="_blank">WhatsApp</a>
 </div>
 </div>
 
@@ -233,17 +161,16 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #1
 </section>
 
 <section id="contact">
-<h2>Contact Us</h2>
-<p>Send us your custom 3D model or inquiry.</p>
+<h2>Contact</h2>
 <form action="https://wa.me/919823847358" target="_blank">
 <input type="text" placeholder="Your Name" required>
 <input type="email" placeholder="Your Email" required>
-<textarea placeholder="Your Message / STL link" required></textarea>
-<button type="submit" class="btn">Send via WhatsApp</button>
+<textarea placeholder="Your Message"></textarea>
+<button class="btn">Send</button>
 </form>
 </section>
 
-<footer>© 2025 Print3D • Designed by Rajaryan • WhatsApp: 9823847358</footer>
+<footer>© 2025 Print3D</footer>
 
 <script>
 const cursor=document.querySelector(".cursor");
@@ -252,8 +179,6 @@ document.addEventListener("mousemove",e=>{
  cursor.style.top=e.clientY+"px";
 });
 function toggleTheme(){document.body.classList.toggle("light");}
-const observer=new IntersectionObserver(e=>{e.forEach(x=>x.isIntersecting&&x.target.classList.add("reveal"));},{threshold:0.15});
-document.querySelectorAll(".card").forEach(c=>observer.observe(c));
 </script>
 
 </body>
