@@ -53,14 +53,7 @@ header{
 }
 
 /* Logo */
-.logo{width:260px;max-width:90%;animation:titlePop 1.2s ease;}
-@keyframes titlePop{from{opacity:0;transform:scale(0.7);}to{opacity:1;transform:scale(1);}}
-
-header p{
-    margin-top:14px;font-size:1.2rem;color:var(--muted);
-    opacity:0;animation:fadeUp 1s ease forwards;animation-delay:0.8s;
-}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+.logo{width:260px;max-width:90%;}
 
 /* Button */
 .btn{
@@ -72,10 +65,23 @@ header p{
 /* Sections */
 section{padding:100px 20px;scroll-margin-top:80px;}
 
+/* Search */
+#searchInput{
+    width:100%;
+    max-width:400px;
+    padding:12px;
+    margin:20px auto;
+    display:block;
+    border-radius:8px;
+    border:none;
+    font-size:16px;
+}
+
+/* Products */
 .products{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:30px;margin-top:50px;
+    gap:30px;margin-top:30px;
 }
 
 .card{
@@ -115,9 +121,9 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #1
 </nav>
 
 <header id="home">
-<svg class="logo" viewBox="0 0 140 40" xmlns="http://www.w3.org/2000/svg">
+<svg class="logo" viewBox="0 0 140 40">
 <defs>
-<linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+<linearGradient id="grad" x1="0%" y1="0%" x2="100%">
 <stop offset="0%" stop-color="#6c63ff"/>
 <stop offset="100%" stop-color="#00e5ff"/>
 </linearGradient>
@@ -132,6 +138,9 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #1
 <section id="products">
 <h2>Our Products</h2>
 
+<!-- SEARCH BAR -->
+<input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+
 <div class="products">
 
 <!-- INFINITY CUBE -->
@@ -139,9 +148,9 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #1
 <img src="infinitycube.jpg">
 <div class="card-content">
 <h3>Infinity Cube 🔥</h3>
-<div class="details">🔥 Best Seller • Satisfying folding cube</div>
+<div class="details">Best seller folding cube</div>
 <div class="price">₹79</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%20I%20am%20interested%20in%20Infinity%20Cube%20(₹79)" target="_blank">WhatsApp</a>
+<a class="btn" href="https://wa.me/919823847358?text=Hi%20Infinity%20Cube%20(₹79)" target="_blank">WhatsApp</a>
 </div>
 </div>
 
@@ -189,34 +198,6 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #1
 </div>
 </div>
 
-<!-- OTHER PRODUCTS -->
-<div class="card">
-<img src="https://via.placeholder.com/400x300">
-<div class="card-content">
-<h3>Keyboard Stand</h3>
-<div class="price">₹20</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%20Keyboard%20Stand" target="_blank">WhatsApp</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/400x300">
-<div class="card-content">
-<h3>Rocktobus</h3>
-<div class="price">₹20</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%20Rocktobus" target="_blank">WhatsApp</a>
-</div>
-</div>
-
-<div class="card">
-<img src="https://via.placeholder.com/400x300">
-<div class="card-content">
-<h3>Flexi Octopus</h3>
-<div class="price">₹20</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%20Flexi%20Octopus" target="_blank">WhatsApp</a>
-</div>
-</div>
-
 </div>
 </section>
 
@@ -230,7 +211,7 @@ footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #1
 </form>
 </section>
 
-<footer>© 2025 Print3D • Designed by Rajaryan</footer>
+<footer>© 2025 Print3D</footer>
 
 <script>
 const cursor=document.querySelector(".cursor");
@@ -238,10 +219,27 @@ document.addEventListener("mousemove",e=>{
  cursor.style.left=e.clientX+"px";
  cursor.style.top=e.clientY+"px";
 });
-function toggleTheme(){document.body.classList.toggle("light");}
+
+function toggleTheme(){
+ document.body.classList.toggle("light");
+}
+
+/* SEARCH FUNCTION */
+function searchProducts(){
+ let input=document.getElementById("searchInput").value.toLowerCase();
+ let cards=document.querySelectorAll(".card");
+
+ cards.forEach(card=>{
+   let text=card.innerText.toLowerCase();
+   card.style.display = text.includes(input) ? "" : "none";
+ });
+}
+
+/* ANIMATION */
 const observer=new IntersectionObserver(e=>{
- e.forEach(x=>x.isIntersecting&&x.target.classList.add("reveal"));
+ e.forEach(x=>x.isIntersecting && x.target.classList.add("reveal"));
 },{threshold:0.15});
+
 document.querySelectorAll(".card").forEach(c=>observer.observe(c));
 </script>
 
