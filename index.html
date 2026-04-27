@@ -8,239 +8,164 @@
 <style>
 :root {
     --bg:#0b0d14; --card:#15192b; --text:#e9e9f1; --muted:#9aa0b4;
-    --primary:#6c63ff; --secondary:#00e5ff; --accent:#25D366;
+    --primary:#6c63ff; --accent:#25D366;
 }
 .light { --bg:#f4f6fb; --card:#fff; --text:#1a1a1a; --muted:#555; }
 
 body{
     margin:0;font-family:"Segoe UI",sans-serif;
     background:var(--bg);color:var(--text);
-    scroll-behavior:smooth;transition:0.4s;overflow-x:hidden;
 }
 
-/* Cursor */
-.cursor{
-    width:20px;height:20px;border-radius:50%;
-    position:fixed;pointer-events:none;
-    transform:translate(-50%,-50%);
-    background:radial-gradient(circle, rgba(108,99,255,0.7), rgba(108,99,255,0));
-    mix-blend-mode:screen;z-index:9999;
-}
-
-/* Toggle */
-.toggle{
-    position:fixed;top:20px;right:20px;
-    background:var(--card);border:none;color:var(--text);
-    padding:10px 14px;border-radius:10px;
-    cursor:pointer;z-index:100;
-}
-
-/* Nav */
+/* NAV */
 nav{
     position:fixed;top:20px;left:50%;
     transform:translateX(-50%);
-    display:flex;gap:25px;font-weight:bold;z-index:100;
+    display:flex;gap:20px;font-weight:bold;
 }
-nav a{color:var(--text);padding:6px 10px;border-radius:6px;transition:0.3s;}
-nav a:hover{background:var(--primary);}
+nav a{color:var(--text);text-decoration:none}
 
-/* Hero */
+/* HEADER */
 header{
-    min-height:100vh;display:flex;flex-direction:column;
-    justify-content:center;align-items:center;text-align:center;
-    background:radial-gradient(circle at top,#1c1f3a,transparent),
-               linear-gradient(120deg,#0b0d14,#0f1230);
+    height:100vh;
+    display:flex;flex-direction:column;
+    justify-content:center;align-items:center;
+    text-align:center;
 }
 
-/* Logo */
-.logo{width:260px;max-width:90%;}
-
-/* Button */
+/* BUTTON */
 .btn{
-    display:inline-block;padding:10px 18px;
+    padding:10px 18px;
     background:linear-gradient(135deg,var(--accent),#6dff9c);
-    color:#000;border-radius:10px;font-weight:600;
+    border-radius:10px;color:#000;font-weight:600;
+    text-decoration:none;
 }
 
-/* Sections */
-section{padding:100px 20px;scroll-margin-top:80px;}
+/* SECTION */
+section{padding:80px 20px;text-align:center;}
 
-/* Search */
+/* 🔍 SEARCH BAR (FIXED) */
+.search-box{
+    display:flex;
+    justify-content:center;
+    margin:30px 0;
+}
+
 #searchInput{
-    width:100%;
-    max-width:400px;
-    padding:12px;
-    margin:20px auto;
-    display:block;
-    border-radius:8px;
+    width:320px;
+    padding:14px;
+    border-radius:30px;
     border:none;
+    outline:none;
     font-size:16px;
+    text-align:center;
+    box-shadow:0 5px 20px rgba(0,0,0,0.3);
 }
 
-/* Products */
+/* PRODUCTS */
 .products{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:30px;margin-top:30px;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
 }
 
+/* CARD */
 .card{
-    background:var(--card);border-radius:18px;overflow:hidden;
-    box-shadow:0 25px 60px rgba(0,0,0,0.35);
-    transform:translateY(80px);opacity:0;
-    transition:0.6s;cursor:pointer;
+    background:var(--card);
+    border-radius:15px;
+    overflow:hidden;
+    padding-bottom:15px;
+    transition:0.3s;
 }
-.card.reveal{transform:translateY(0);opacity:1;}
-.card:hover{
-    transform:translateY(-12px) scale(1.03);
-    box-shadow:0 40px 90px rgba(108,99,255,0.35);
+.card:hover{transform:scale(1.05)}
+
+.card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
 }
 
-.card img{width:100%;height:200px;object-fit:cover;}
-.card-content{padding:20px;}
-.details{color:var(--muted);margin-top:8px;}
-.price{margin:14px 0;font-weight:bold;}
-
-/* Contact */
-form{display:flex;flex-direction:column;max-width:500px;margin:auto;}
-input,textarea{padding:12px;margin:10px 0;border-radius:8px;border:none;}
-
-footer{text-align:center;padding:40px;color:var(--muted);border-top:1px solid #1f2333;}
+.card h3{margin:10px 0;}
+.price{font-weight:bold;margin:10px 0;}
 </style>
 </head>
 
 <body>
 
-<div class="cursor"></div>
-<button class="toggle" onclick="toggleTheme()">🌙 / ☀️</button>
-
 <nav>
-  <a href="#home">Home</a>
-  <a href="#products">Products</a>
-  <a href="#contact">Contact</a>
+<a href="#home">Home</a>
+<a href="#products">Products</a>
 </nav>
 
 <header id="home">
-<svg class="logo" viewBox="0 0 140 40">
-<defs>
-<linearGradient id="grad" x1="0%" y1="0%" x2="100%">
-<stop offset="0%" stop-color="#6c63ff"/>
-<stop offset="100%" stop-color="#00e5ff"/>
-</linearGradient>
-</defs>
-<polygon points="10,10 25,2 40,10 40,28 25,36 10,28" fill="none" stroke="url(#grad)" stroke-width="2"/>
-<text x="50" y="28" font-size="22" font-weight="700" fill="url(#grad)">Print3D</text>
-</svg>
-<p>Modern Custom 3D Printing & Prototyping</p>
+<h1>Print3D</h1>
+<p>Custom 3D Printing</p>
 <a class="btn" href="#products">See Products</a>
 </header>
 
 <section id="products">
 <h2>Our Products</h2>
 
-<!-- SEARCH BAR -->
+<!-- 🔍 SEARCH BAR -->
+<div class="search-box">
 <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+</div>
 
 <div class="products">
 
 <!-- INFINITY CUBE -->
 <div class="card">
 <img src="infinitycube.jpg">
-<div class="card-content">
-<h3>Infinity Cube 🔥</h3>
-<div class="details">Best seller folding cube</div>
+<h3>Infinity Cube</h3>
 <div class="price">₹79</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%20Infinity%20Cube%20(₹79)" target="_blank">WhatsApp</a>
-</div>
+<a class="btn" href="https://wa.me/919823847358?text=Infinity%20Cube%2079">Buy</a>
 </div>
 
 <!-- FOX -->
 <div class="card">
 <img src="Fox.jpg">
-<div class="card-content">
 <h3>Fox Figurine</h3>
-<div class="details">6cm x 6cm</div>
 <div class="price">₹30</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%20Fox%20Figurine%20(₹30)" target="_blank">WhatsApp</a>
-</div>
+<a class="btn" href="https://wa.me/919823847358?text=Fox%2030">Buy</a>
 </div>
 
 <!-- BENCHY -->
 <div class="card">
 <img src="Benchy.jpg">
-<div class="card-content">
 <h3>Benchy</h3>
-<div class="details">Boat model</div>
 <div class="price">₹30</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%20Benchy%20(₹30)" target="_blank">WhatsApp</a>
-</div>
+<a class="btn" href="https://wa.me/919823847358?text=Benchy%2030">Buy</a>
 </div>
 
 <!-- SPIDER -->
 <div class="card">
 <img src="spider.jpg">
-<div class="card-content">
 <h3>Spider Model</h3>
-<div class="details">Detailed figure</div>
 <div class="price">₹25</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%20Spider%20Model%20(₹25)" target="_blank">WhatsApp</a>
-</div>
+<a class="btn" href="https://wa.me/919823847358?text=Spider%2025">Buy</a>
 </div>
 
 <!-- DINOSAUR -->
 <div class="card">
 <img src="Dinosour.jpg">
-<div class="card-content">
 <h3>Flexible Dinosaur</h3>
-<div class="details">Bendable toy</div>
 <div class="price">₹50</div>
-<a class="btn" href="https://wa.me/919823847358?text=Hi%20Flexible%20Dinosaur%20(₹50)" target="_blank">WhatsApp</a>
-</div>
+<a class="btn" href="https://wa.me/919823847358?text=Dinosaur%2050">Buy</a>
 </div>
 
 </div>
 </section>
-
-<section id="contact">
-<h2>Contact Us</h2>
-<form action="https://wa.me/919823847358" target="_blank">
-<input type="text" placeholder="Your Name" required>
-<input type="email" placeholder="Your Email" required>
-<textarea placeholder="Your Message"></textarea>
-<button type="submit" class="btn">Send via WhatsApp</button>
-</form>
-</section>
-
-<footer>© 2025 Print3D</footer>
 
 <script>
-const cursor=document.querySelector(".cursor");
-document.addEventListener("mousemove",e=>{
- cursor.style.left=e.clientX+"px";
- cursor.style.top=e.clientY+"px";
-});
-
-function toggleTheme(){
- document.body.classList.toggle("light");
-}
-
-/* SEARCH FUNCTION */
 function searchProducts(){
  let input=document.getElementById("searchInput").value.toLowerCase();
  let cards=document.querySelectorAll(".card");
 
  cards.forEach(card=>{
    let text=card.innerText.toLowerCase();
-   card.style.display = text.includes(input) ? "" : "none";
+   card.style.display = text.includes(input) ? "block" : "none";
  });
 }
-
-/* ANIMATION */
-const observer=new IntersectionObserver(e=>{
- e.forEach(x=>x.isIntersecting && x.target.classList.add("reveal"));
-},{threshold:0.15});
-
-document.querySelectorAll(".card").forEach(c=>observer.observe(c));
 </script>
 
 </body>
