@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Print3D | Custom 3D Printing</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Print3D | Custom 3D Printing</title>
 
 <style>
 
@@ -24,8 +24,13 @@
     --muted:#555;
 }
 
-body{
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
     font-family:"Segoe UI",sans-serif;
     background:var(--bg);
     color:var(--text);
@@ -106,6 +111,7 @@ nav a:hover{
 
 .sidebar h2{
     margin-top:60px;
+    margin-bottom:20px;
 }
 
 .sidebar button{
@@ -118,13 +124,14 @@ nav a:hover{
     color:var(--text);
     cursor:pointer;
     transition:0.3s;
+    font-size:15px;
 }
 
 .sidebar button:hover{
     background:var(--primary);
 }
 
-/* SIDEBAR BUTTON */
+/* SIDEBAR TOGGLE */
 
 .sidebar-toggle{
     position:fixed;
@@ -136,7 +143,7 @@ nav a:hover{
     border-radius:50%;
     background:var(--primary);
     color:white;
-    font-size:22px;
+    font-size:24px;
     cursor:pointer;
     z-index:3000;
     box-shadow:0 0 20px rgba(108,99,255,0.7);
@@ -178,6 +185,7 @@ header{
 header p{
     color:var(--muted);
     font-size:1.2rem;
+    margin-top:15px;
 }
 
 /* BUTTON */
@@ -205,10 +213,18 @@ section{
     padding:100px 20px;
 }
 
+.products-title{
+    text-align:center;
+    font-size:40px;
+    margin-bottom:30px;
+}
+
+/* SEARCH BAR */
+
 .search-box{
     display:flex;
     justify-content:center;
-    margin:30px 0;
+    margin-bottom:40px;
 }
 
 #searchInput{
@@ -217,15 +233,19 @@ section{
     border:none;
     border-radius:30px;
     outline:none;
-    text-align:center;
     font-size:16px;
+    text-align:center;
 }
+
+/* PRODUCT GRID */
 
 .products{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
     gap:30px;
 }
+
+/* CARD */
 
 .card{
     background:var(--card);
@@ -257,9 +277,19 @@ section{
     padding:20px;
 }
 
+.card h3{
+    margin-bottom:10px;
+}
+
+.details{
+    color:var(--muted);
+    margin-bottom:10px;
+}
+
 .price{
     font-weight:bold;
     margin:15px 0;
+    font-size:20px;
 }
 
 /* FOOTER */
@@ -275,7 +305,8 @@ footer{
 
 <body>
 
-<!-- CURSOR -->
+<!-- GLOW CURSOR -->
+
 <div class="cursor"></div>
 
 <!-- SIDEBAR -->
@@ -341,7 +372,6 @@ Products
 <linearGradient id="grad" x1="0%" x2="100%">
 
 <stop offset="0%" stop-color="#6c63ff"/>
-
 <stop offset="100%" stop-color="#00e5ff"/>
 
 </linearGradient>
@@ -371,17 +401,19 @@ Print3D
 Modern Custom 3D Printing & Prototyping
 </p>
 
+<br>
+
 <a class="btn" href="#products">
 See Products
 </a>
 
 </header>
 
-<!-- PRODUCTS -->
+<!-- PRODUCTS SECTION -->
 
 <section id="products">
 
-<h1 style="text-align:center;">
+<h1 class="products-title">
 Our Products
 </h1>
 
@@ -392,7 +424,7 @@ Our Products
 <input
 type="text"
 id="searchInput"
-placeholder="Search products..."
+placeholder="Search Products..."
 onkeyup="searchProducts()">
 
 </div>
@@ -405,26 +437,29 @@ onkeyup="searchProducts()">
 
 <div class="card" data-category="toy">
 
-<a href="fox.html"
-style="text-decoration:none;color:inherit;">
-
 <img src="Fox.jpg">
 
 <div class="card-content">
 
 <h3>Fox Figurine</h3>
 
+<div class="details">
+Cute 3D printed fox
+</div>
+
 <div class="price">
 ₹30
 </div>
 
-<div class="btn">
-View Product
-</div>
+<a class="btn"
+href="https://wa.me/919823847358?text=Hi%20I%20am%20interested%20in%20Fox%20Figurine%20₹30"
+target="_blank">
 
-</div>
+WhatsApp
 
 </a>
+
+</div>
 
 </div>
 
@@ -436,14 +471,18 @@ View Product
 
 <div class="card-content">
 
-<h3>Benchy</h3>
+<h3>Benchy Boat</h3>
+
+<div class="details">
+Classic 3D printing model
+</div>
 
 <div class="price">
 ₹30
 </div>
 
 <a class="btn"
-href="https://wa.me/919823847358?text=Hi%20I%20am%20interested%20in%20Benchy%20₹30"
+href="https://wa.me/919823847358?text=Hi%20I%20am%20interested%20in%20Benchy%20Boat%20₹30"
 target="_blank">
 
 WhatsApp
@@ -463,6 +502,10 @@ WhatsApp
 <div class="card-content">
 
 <h3>Spider Model</h3>
+
+<div class="details">
+Detailed mini spider
+</div>
 
 <div class="price">
 ₹25
@@ -490,6 +533,10 @@ WhatsApp
 
 <h3>Flexible Dinosaur</h3>
 
+<div class="details">
+Flexible articulated dinosaur
+</div>
+
 <div class="price">
 ₹50
 </div>
@@ -506,22 +553,26 @@ WhatsApp
 
 </div>
 
-<!-- RENGOKO -->
+<!-- RENGOKU -->
 
 <div class="card" data-category="anime">
 
-<img src=""WhatsApp Image 2026-05-20 at 4.24.43 PM (1).jpeg"">
+<img src="rengoku.jpeg">
 
 <div class="card-content">
 
-<h3>Rengoko 2D Art</h3>
+<h3>Rengoku 2D Art</h3>
+
+<div class="details">
+Anime wall art model
+</div>
 
 <div class="price">
 ₹50
 </div>
 
 <a class="btn"
-href="https://wa.me/919823847358?text=Hi%20I%20am%20interested%20in%20Rengoko%202D%20Art%20₹50"
+href="https://wa.me/919823847358?text=Hi%20I%20am%20interested%20in%20Rengoku%202D%20Art%20₹50"
 target="_blank">
 
 WhatsApp
@@ -532,29 +583,33 @@ WhatsApp
 
 </div>
 
-</div>
-
-    <!-- TANJIRO PRODUCT -->
+<!-- TANGIRO -->
 
 <div class="card" data-category="anime">
 
-<img src="https://via.placeholder.com/400x300">
+<img src="tangiro.jpeg">
 
 <div class="card-content">
 
-<h3>Tanjiro 2D Model</h3>
+<h3>Tangiro 2D Model</h3>
+
+<div class="details">
+Anime style 2D model
+</div>
 
 <div class="price">
 ₹50
 </div>
 
 <a class="btn"
-href="https://wa.me/919823847358?text=Hi%20I%20am%20interested%20in%20Tanjiro%202D%20Model%20₹50"
+href="https://wa.me/919823847358?text=Hi%20I%20am%20interested%20in%20Tangiro%202D%20Model%20₹50"
 target="_blank">
 
 WhatsApp
 
 </a>
+
+</div>
 
 </div>
 
@@ -641,7 +696,7 @@ card.style.display="none";
 
 }
 
-/* FILTER */
+/* CATEGORY FILTER */
 
 function filterCategory(category){
 
@@ -664,7 +719,7 @@ card.style.display="none";
 
 }
 
-/* REVEAL */
+/* CARD REVEAL */
 
 const observer=new IntersectionObserver(entries=>{
 
